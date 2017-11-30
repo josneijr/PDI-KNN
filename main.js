@@ -14,7 +14,6 @@ app.get('/', function (req, res) {
   res.render('pages/index');
 });
 
-
 // 404 page
 app.use(function(req, res, next){
   res.status(500).send('Nothing found');
