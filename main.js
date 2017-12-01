@@ -1,30 +1,22 @@
 // load express
 var express = require('express');
+var favicon = require('serve-favicon')
+var path = require('path')
 var app = express();
+
+app.use(favicon(__dirname + '/public/favicon.ico'));
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
 // set resources dirs
-app.use(express.static('public'));
-app.use(express.static('static'));
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/static/css'));
+app.use(express.static(__dirname + '/static/js'));
 
 // index page (whenever we enter without a second URL)
 app.get('/', function (req, res) {
-  res.render('pages/index');
-});
-
-// 404 page
-app.use(function(req, res, next){
-  res.status(500).send('Nothing found');
-  //res.render('404', {status: 404});
-});
-
-// error page
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-  //res.render('500', {status: 500, error: err});
+  res.render('index');
 });
 
 // start server, using either the heroku given port or the 3000, for local debugging

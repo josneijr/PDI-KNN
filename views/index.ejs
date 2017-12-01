@@ -1,160 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 
 <head>
-    <% include ../partials/head_landing %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PDI - K-NEAREST NEIGHBOR</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="uploadImage.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="uploadImage.js"></script>
+    <script type="text/javascript" src="navbar.js"></script>
 </head>
 
 <body>
-    <div class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <a href="index.html">
-                        <img src="loading.svg" height="50px">
-                    </a>
-                </div>
-                <div class="col-lg-8 col-md-4 col-sm-12 col-xs-12">
-                    <div class="navigation">
-                        <div id="navigation">
-                            <ul>
-                                <li class="active">
-                                    <a href="index.html" title="Home">Página Inicial</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html" title="Contact Us">Contato</a> 
-                                </li>
-                                <li style="background-color: #aa9144">
-                                    <a href="#">(15) 99777-1345</a>
-                                </li>
-                            </ul>
-                        </div>
+    <nav class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
+        <!-- top nav -->
+        <nav class="navbar navbar-top hidden-xs">
+            <div class="container">
+                <!-- left nav top -->
+                <ul class="nav navbar-nav pull-left">
+                    <li><a href="#"><i class="fa fa-user-circle text-white"></i></a></li>
+                    <li><a href="#"><span class="text-white">Feito por: Josnei Luis Olszewski Junior</b></span></a></li>
+                </ul>
+                <!-- right nav top -->
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="#" class="text-white">josnei@alunos.utfpr.edu.br</a></li>
+                </ul>
+            </div>
+            <div class="dividline light-grey"></div>
+        </nav>
+        <!-- down nav -->
+        <nav class="navbar navbar-down">
+            <div class="container">
+                <div class="flex-container">  
+                    <div class="navbar-header flex-item" style="background-color: white">
+                        <div class="navbar-brand" href="#">PDI - KNN</div>
                     </div>
-                </div>
+                    <ul class="nav navbar-nav flex-item hidden-xs">
+                        <li><a href="#">Analisar</a></li> 
+                        <li><a href="#">Banco de Imagens</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav flex-item hidden-xs pull-right">
+                        <li><a href="#" class="">Apresentação</a></li> 
+                    </ul>
+                    <!-- dropdown only moblie -->
+                    <div class="dropdown visible-xs pull-right">
+                        <button class="btn btn-default dropdown-toggle " type="button" id="dropdownmenu" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-align-justify"></span> 
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Analisar</a></li>
+                            <li><a href="#">Banco de imagens</a></li> 
+                        </ul>
+                    </div>
+                </div>  
+            </div>
+        </nav>
+    </nav> 
+    <!--bg img  -->
+    <header>
+        <div style="background-color: black; width:100%; height: 200px"><div>
+    </header>   
+
+    <div class="container">
+        <div class="row">   
+            <div id="div_label_grande" class="col-xs-12 col-md-2 col-md-offset-1">              
+                <h2 id="label_grande">Escolha a sua imagem:</h2>
+            </div>
+            
+            <div class="col-xs-12 col-md-6 inputDiv">  
+                <!-- image-preview-filename input [CUT FROM HERE]-->
+                <div class="input-group image-preview">
+                    <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                    <span class="input-group-btn">
+                        <!-- image-preview-clear button -->
+                        <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                            <span class="glyphicon glyphicon-remove"></span> Clear
+                        </button>
+                        <!-- image-preview-input -->
+                        <div class="btn btn-default image-preview-input">
+                            <span class="glyphicon glyphicon-folder-open"></span>
+                            <span class="image-preview-input-title">Browse</span>
+                            <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+                        </div>
+                    </span>
+                </div><!-- /input-group image-preview [TO HERE]--> 
             </div>
         </div>
     </div>
-    
-    <div class="hero-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <h1 class="hero-title">Serviço confiável e rápido</h1>
-                    <p class="hero-text"><strong>Faça já seu orçamento!</strong> </p>
-                    <a href="#" class="btn btn-default">Ligue pra gente</a> </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="space-medium">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
-                    <div class="section-title mb60 text-center">
-                        <!-- section title start-->
-                        <h1>nossos clientes</h1>
-                    </div>
-                    <!-- /.section title start-->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                    <img src="marca_sao_judas.png">
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                    <img src="marca_sao_judas.png">
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                    <img src="marca_sao_judas.png">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <!-- footer-->
-        <div class="container">
-            <div class="footer-block">
-                <!-- footer block -->
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="footer-widget">
-                            <h2 class="widget-title">Endereço</h2>
-                            <ul class="listnone contact">
-                                <li><i class="fa fa-map-marker"></i> Rua São Pedro, 2000</li>
-                                <li><i></i>Itararé - SP (18460-000)</li>
-                                <li><i class="fa fa-phone"></i> (41) 3532-xxxx </li>
-                                <li><i class="fa fa-mobile"></i> (41) 9xxxx-xxxx </li>
-                                <li><i class="fa fa-envelope-o"></i> contato@zrtornearia.com</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- MAPA -->
-                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-
-                        <div class="footer-widget">
-                            <h2 class="widget-title">Mapa</h2>
-                            <div id="map"></div>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="tiny-footer">
-                    <!-- tiny footer block -->
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="copyright-content">
-                                <p>© Josnei Olszewski 2017 | josneijr@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.tiny footer block -->
-            </div>
-            <!-- /.footer block -->
-        </div>
-    </div>
-    <!-- /.footer-->
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/menumaker.js"></script>
-    <!-- sticky header -->
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/sticky-header.js"></script>
-
-    <script>
-        function initMap() {
-          var localOficina = {lat: -24.110922, lng: -49.317212};
-
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 16,
-            center: localOficina,
-            clickable: false
-          });
-
-          var marker = new google.maps.Marker({
-            position: localOficina,
-            map: map,
-            visible: true
-          });
-        }
-    </script>
-    
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBg-Rjcsgdj-yiR3KxTz5qIpbJ-2q9tLx0&callback=initMap">
-    </script>
-
-    <style>
-        #map {
-         height: 400px;
-         width: 100%;
-        }
-     </style>
-
 </body>
 
 </html>
