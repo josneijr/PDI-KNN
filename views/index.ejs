@@ -3,80 +3,46 @@
 <html>
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>PDI - K-NEAREST NEIGHBOR</title>
+    
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="uploadImage.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="navbar.css">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="uploadImage.css">
+    <link rel="stylesheet" href="body.css">
+
     <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="uploadImage.js"></script>
     <script type="text/javascript" src="navbar.js"></script>
+    <script type="text/javascript" src="knn.js"></script>
+    <script type="text/javascript" src="image.js"></script>
+
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
-        <!-- top nav -->
-        <nav class="navbar navbar-top hidden-xs">
-            <div class="container">
-                <!-- left nav top -->
-                <ul class="nav navbar-nav pull-left">
-                    <li><a href="#"><i class="fa fa-user-circle text-white"></i></a></li>
-                    <li><a href="#"><span class="text-white">Feito por: Josnei Luis Olszewski Junior</b></span></a></li>
-                </ul>
-                <!-- right nav top -->
-                <ul class="nav navbar-nav pull-right">
-                    <li><a href="#" class="text-white">josnei@alunos.utfpr.edu.br</a></li>
-                </ul>
-            </div>
-            <div class="dividline light-grey"></div>
-        </nav>
-        <!-- down nav -->
-        <nav class="navbar navbar-down">
-            <div class="container">
-                <div class="flex-container">  
-                    <div class="navbar-header flex-item" style="background-color: white">
-                        <div class="navbar-brand" href="#">PDI - KNN</div>
-                    </div>
-                    <ul class="nav navbar-nav flex-item hidden-xs">
-                        <li><a href="#">Analisar</a></li> 
-                        <li><a href="#">Banco de Imagens</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav flex-item hidden-xs pull-right">
-                        <li><a href="#" class="">Apresentação</a></li> 
-                    </ul>
-                    <!-- dropdown only moblie -->
-                    <div class="dropdown visible-xs pull-right">
-                        <button class="btn btn-default dropdown-toggle " type="button" id="dropdownmenu" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-align-justify"></span> 
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Analisar</a></li>
-                            <li><a href="#">Banco de imagens</a></li> 
-                        </ul>
-                    </div>
-                </div>  
-            </div>
-        </nav>
-    </nav> 
-    <!--bg img  -->
-    <header>
-        <div style="background-color: black; width:100%; height: 200px"><div>
-    </header>   
 
+<header>
+    <% include partials/header %>
+</header>
+
+<main>
+    
     <div class="container">
         <div class="row">   
-            <div id="div_label_grande" class="col-xs-12 col-md-2 col-md-offset-1">              
-                <h2 id="label_grande">Escolha a sua imagem:</h2>
+            <div id="div_label_grande" class="col-xs-12 col-md-4 col-md-offset-1">              
+                <h2 id="label_grande">Escolha a imagem:</h2>
             </div>
             
-            <div class="col-xs-12 col-md-6 inputDiv">  
+            <div id="div_inputImg" class="col-xs-12 col-md-5    ">  
                 <!-- image-preview-filename input [CUT FROM HERE]-->
-                <div class="input-group image-preview">
+                <div id="input_field" class="input-group image-preview">
                     <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
                     <span class="input-group-btn">
                         <!-- image-preview-clear button -->
@@ -92,8 +58,44 @@
                     </span>
                 </div><!-- /input-group image-preview [TO HERE]--> 
             </div>
+
+            <div id="div_botaoOK" class="col-xs-12 col-md-3">  
+                    <button type="button" class="btn btn-info btn-circle btn-xl"><i class="glyphicon glyphicon-ok"></i></button>
+            </div>
+
         </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <label id="label_resultado">A imagem corresponde a:</label>
+            </div>
+        </div>
+
+        <div id="div_resultado" class="row text-center">
+            <label id="resultado"></label>
+        </div>
+
+        <div class="horzLine"><hr /></div>
+    </div>
+
+</main>
+
+<footer>
+
+</footer>
+
+<script>
+
+    var arrayA = [0, 1, 2];
+    var arrayB = [3, 3, 5];
+
+    console.log(CalcEuclidianDistance(arrayA, arrayB));
+    CalcImageHistogram();
+
+</script>
+
 </body>
 
 </html>

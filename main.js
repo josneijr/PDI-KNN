@@ -19,6 +19,11 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
+// image database
+app.get('/database', function (req, res) {
+  res.render('database');
+});
+
 // start server, using either the heroku given port or the 3000, for local debugging
 var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('App listening on port ' + listener.address().port);

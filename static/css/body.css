@@ -1,0 +1,28 @@
+#label_resultado{
+    /*visibility: hidden;*/
+    margin-top: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+}
+
+#div_resultado{
+    height: 140px;
+}
+
+#resultado{
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 80px;
+}
+
+.horzLine {
+    background: black  no-repeat scroll center;
+    margin-left: 15em;
+    margin-right: 15em;
+    width:50em;
+    height:2px;
+}
+    
+.horzLine hr {
+    display: none;
+}  
