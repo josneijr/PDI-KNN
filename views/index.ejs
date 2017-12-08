@@ -80,6 +80,10 @@
         <div class="horzLine"><hr /></div>
     </div>
 
+    <div class="row">
+        <input type="text" id="debug">
+    </div>
+
 </main>
 
 <footer>
@@ -93,9 +97,16 @@
 
     CalcEuclidianDistance(arrayA, arrayB);
 
-    var imgHist = CalcImageHistogram("teste.bmp");
+    var imageObj = new Image();
+    imageObj.onload = function()
+    {
+        var imgHist = CalcImageHistogram(imageObj);
 
-    console.log(imgHist);
+        console.log(imgHist);
+
+        document.getElementById("debug").value = imgHist;
+    };
+    imageObj.src = "teste.bmp";
 
 </script>
 
