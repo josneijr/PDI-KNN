@@ -53,7 +53,7 @@
                         <div class="btn btn-default image-preview-input">
                             <span class="glyphicon glyphicon-folder-open"></span>
                             <span class="image-preview-input-title">Browse</span>
-                            <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+                            <input type="file" accept="image/png, image/jpeg, image/gif" onchange="Teste(event)" id="imgInput" name="input-file-preview"/> <!-- rename it -->
                         </div>
                     </span>
                 </div><!-- /input-group image-preview [TO HERE]--> 
@@ -80,7 +80,7 @@
         <div class="horzLine"><hr /></div>
     </div>
 
-    <div class="row">
+    <div class="row" style="visibility: hidden">
         <input type="text" id="debug">
     </div>
 
@@ -92,21 +92,41 @@
 
 <script>
 
-    var arrayA = [0, 1, 2];
-    var arrayB = [3, 3, 5];
+    window.onload = preLoad();
 
-    CalcEuclidianDistance(arrayA, arrayB);
+    var imgDatabase = [];
+
+    function preLoad(){
+        $.getJSON("db.json", function(json) {
+            imgDatabase = json.db;
+        });   
+    }
 
     var imageObj = new Image();
+
+    function Teste(event) {
+        var file    = document.querySelector('input[type=file]').files[0];
+        var reader  = new FileReader();
+
+        reader.addEventListener("load", function () {
+            console.log(reader);
+            imageObj.src = reader.result;
+        }, false);
+
+      reader.readAsDataURL(file);        
+    }
+
     imageObj.onload = function()
     {
         var imgHist = CalcImageHistogram(imageObj);
 
-        console.log(imgHist);
-
         document.getElementById("debug").value = imgHist;
+
+        var answer = DoKnn(3, imgDatabase, imgHist);
+
+        document.getElementById("resultado").innerHTML = answer;
     };
-    imageObj.src = "teste.bmp";
+
 
 </script>
 

@@ -15,8 +15,6 @@ function CalcImageHistogram(imageObj){
     
     var pix = imageData.data;
 
-    console.log(pix);
-
     // Loop over each pixel
     for (var i=0; i < pix.length; i += 4) 
     {
