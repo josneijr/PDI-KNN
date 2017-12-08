@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="uploadImage.css">
     <link rel="stylesheet" href="body.css">
+    <link rel="stylesheet" href="table.css">
 
     <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -66,7 +67,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="resultArea">
         <div class="row">
             <div class="col-12 text-center">
                 <label id="label_resultado">A imagem corresponde a:</label>
@@ -80,8 +81,19 @@
         <div class="horzLine"><hr /></div>
     </div>
 
-    <div class="row" style="visibility: hidden">
-        <input type="text" id="debug">
+    <div class="container">
+        <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="tr">
+                        <div class="td">Imagem</div>
+                        <div class="td">Definição</div>
+                        <div class="td">Distância</div>
+                    </div>
+                </div>
+                <div class="panel-body" id="panelContent">
+
+                </div>
+            </div>
     </div>
 
 </main>
@@ -118,13 +130,43 @@
 
     imageObj.onload = function()
     {
+        var k=3;
+
         var imgHist = CalcImageHistogram(imageObj);
 
-        document.getElementById("debug").value = imgHist;
+        //document.getElementById("debug").value = imgHist;
 
-        var answer = DoKnn(3, imgDatabase, imgHist);
+        var answer = DoKnn(k, imgDatabase, imgHist);
 
-        document.getElementById("resultado").innerHTML = answer;
+        document.getElementById("resultado").innerHTML = answer.text;
+
+        var myNode = document.getElementById("panelContent");
+        while (myNode.firstChild) {
+            myNode.removeChild(myNode.firstChild);
+        }
+
+        for(var i=0; i<answer.allData.length; i++)
+        {
+            var newRow = document.createElement('div');
+            newRow.className = 'tr';
+
+            var col1 = document.createElement('div');
+            var col2 = document.createElement('div');
+            var col3 = document.createElement('div');
+            col1.className = 'td';
+            col2.className = 'td';
+            col3.className = 'td';
+
+            col1.innerHTML = answer.allData[i].img;
+            col2.innerHTML = answer.allData[i].result;
+            col3.innerHTML = answer.allData[i].distance;
+
+            newRow.appendChild(col1);
+            newRow.appendChild(col2);
+            newRow.appendChild(col3);
+
+            document.getElementById('panelContent').appendChild(newRow);
+        }
     };
 
 

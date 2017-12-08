@@ -33,7 +33,12 @@ function DoKnn(k, db, imgHistogram){
 
     console.log(answer);
 
-    return mode(answer);
+    var answerConj = {
+        allData: finalKnn,
+        text: mode(answer)
+    };
+
+    return answerConj;
 }
 
 function mode(array)

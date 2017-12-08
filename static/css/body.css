@@ -5,6 +5,10 @@
     font-size: 40px;
 }
 
+#resultArea{
+    margin-top: 50px;
+}
+
 #div_resultado{
     height: 140px;
 }
