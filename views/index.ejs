@@ -157,7 +157,12 @@
             col2.className = 'td';
             col3.className = 'td';
 
-            col1.innerHTML = answer.allData[i].img;
+            var img = document.createElement('img');
+            img.src = 'db/' + answer.allData[i].img;
+            img.style.width = "100px";
+            img.style.height = "100px";
+
+            col1.appendChild(img);
             col2.innerHTML = answer.allData[i].result;
             col3.innerHTML = answer.allData[i].distance;
 

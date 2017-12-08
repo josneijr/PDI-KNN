@@ -26,7 +26,7 @@ function DoKnn(k, db, imgHistogram){
 
     var answer = [];
 
-    for(var i=1; i<=k; i++)
+    for(var i=0; i<k; i++)
     {
         answer = answer.concat(finalKnn[i].result);
     }
@@ -60,5 +60,6 @@ function mode(array)
             maxCount = modeMap[el];
         }
     }
+
     return maxEl;
 }
